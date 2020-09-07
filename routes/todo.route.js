@@ -60,4 +60,15 @@ todoRouter.post("/update/:id", (req, res) => {
     });
 });
 
+todoRouter.delete("/delete/:id", (req, res) => {
+    Todo.findByIdAndRemove(req.params.id, (err, todo) => {
+        if(err) {
+            console.log(err);
+        }
+        else {
+            res.json(todo);
+        }
+    });
+});
+
 module.exports = todoRouter;
